@@ -513,8 +513,21 @@ function App() {
 
           {analysis && (
             <div className="analysis-results">
+              {analysis.intent === "greeting" ? (
+                <div className="result-card executive-card">
+                  <h3>
+                    <Sparkles size={19} />
+                    VOC Intelligence 360
+                  </h3>
 
-              <div className="results-title">
+                  <p>
+                    {analysis.final_answer ||
+                      "Hello! Welcome to VOC Intelligence 360. How can I help you?"}
+                  </p>
+                </div>
+              ) : (
+                <>
+                  <div className="results-title">
                 <div>
                   <span className="ai-eyebrow">
                     ANALYSIS RESULTS
@@ -530,6 +543,7 @@ function App() {
 
               {analysis.errors?.synthesis && (
                 <div className="analysis-error">
+                
                   <AlertCircle size={18} />
                   Executive synthesis unavailable. Other analysis
                   results are shown below.
@@ -809,8 +823,9 @@ function App() {
                     No source distribution available.
                   </p>
                 )}
-              </div>
-
+                  </div>
+                </>
+              )}
             </div>
           )}
 
